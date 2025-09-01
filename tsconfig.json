@@ -9,7 +9,9 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "types": ["react", "react-dom"] // make JSX namespace available
+    "types": ["react", "react-dom"], // make JSX namespace available
+    "noEmitOnError": false
   },
+
   "include": ["src"]
 }
