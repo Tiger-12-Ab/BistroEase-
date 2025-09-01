@@ -9,7 +9,7 @@ export interface Dish {
 }
 
 export interface CartItem {
-  id: number;
+  cart_id: number;
   dish_id: number;
   quantity: number;
   price_each: number;
