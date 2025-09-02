@@ -3,7 +3,7 @@ import { FaUtensils, FaShoppingCart, FaMotorcycle } from "react-icons/fa";
 
 interface Step {
   id: number;
-  icon: JSX.Element;
+  icon: React.ReactNode;
   title: string;
   description: string;
 }
@@ -37,7 +37,7 @@ export default function RestaurantSteps() {
       </h2>
 
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 px-4">
-        {steps.map((step, index) => (
+        {steps.map((step) => (
           <div
             key={step.id}
             className="flex flex-col items-center text-center relative bg-primary dark:bg-accent rounded-lg p-6 shadow-lg"
@@ -56,8 +56,6 @@ export default function RestaurantSteps() {
             <p className="text-text-secondary dark:text-text-secondary max-w-xs">
               {step.description}
             </p>
-
-            
           </div>
         ))}
       </div>

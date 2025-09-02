@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 
 interface Props {
-  children: JSX.Element;
+  children: React.ReactNode;
 }
 
 const PrivateRoute: React.FC<Props> = ({ children }) => {
@@ -13,7 +13,7 @@ const PrivateRoute: React.FC<Props> = ({ children }) => {
     return <Navigate to="/login" replace />;
   }
 
-  return children;
+  return <>{children}</>;
 };
 
 export default PrivateRoute;

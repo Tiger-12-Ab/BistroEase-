@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 
 interface Props {
-  children: JSX.Element;
+  children: React.ReactNode;
 }
 
 export const AdminRoute: React.FC<Props> = ({ children }) => {
@@ -13,5 +13,5 @@ export const AdminRoute: React.FC<Props> = ({ children }) => {
     return <Navigate to="/login" replace />;
   }
 
-  return children;
+  return <>{children}</>;
 };
