@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://bistroease.onrender.com/api",
+  baseURL: "https://bistroease-backend.onrender.com/api",
 });
 
 // Attach token dynamically for every request
