@@ -1,4 +1,4 @@
-const SERVER_URL = "http://localhost:5000";
+const SERVER_URL = "https://bistroease-backend.onrender.com";
 
 export const getImageUrl = (url?: string | null) => {
   if (!url) return "/placeholder.jpg";
