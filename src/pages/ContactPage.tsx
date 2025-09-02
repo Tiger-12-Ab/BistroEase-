@@ -14,7 +14,9 @@ const ContactPage: React.FC = () => {
   const [modalMessage, setModalMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -33,53 +35,70 @@ const ContactPage: React.FC = () => {
     setShowModal(true);
   };
 
-  // ✅ Updated input styles with custom borders
   const inputClass =
-    "col-span-2 p-3 border border-bg-dark dark:border-bg-light rounded-md bg-transparent text-text-primary dark:text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary";
+    "w-full p-3 border border-bg-dark dark:border-bg-light rounded-md bg-transparent text-text-primary dark:text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary";
 
   return (
     <section className="bg-bg-light dark:bg-bg-dark">
-      <div className="max-w-6xl mx-auto p-6 sm:p-12 space-y-12 bg-bg-light dark:bg-bg-dark text-text-primary dark:text-text-primary transition-colors duration-300">
-
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-8 space-y-12 text-text-primary dark:text-text-primary transition-colors duration-300">
         {/* Page Title */}
-        <h1 className="text-4xl sm:text-5xl font-bold text-center text-primary dark:text-primary">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-primary dark:text-primary">
           {t("contact.title")}
         </h1>
-        <p className="text-center text-text-secondary dark:text-text-secondary">
+        <p className="text-center text-sm sm:text-base text-text-secondary dark:text-text-secondary">
           {t("contact.subtitle")}
         </p>
 
         {/* Story Section */}
-        <section className="grid gap-6 sm:grid-cols-2 items-center">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <img
             src="/images/restaurant-story.jpg"
             alt="Our Story"
-            className="w-full rounded-lg shadow-lg"
+            className="w-full rounded-lg shadow-lg object-cover h-64 sm:h-80 md:h-full"
           />
-          <div>
-            <h2 className="text-2xl font-semibold mb-2 text-highlight">{t("contact.storyTitle")}</h2>
-            <p className="text-text-secondary dark:text-text-secondary">{t("contact.storyContent")}</p>
+          <div className="space-y-3">
+            <h2 className="text-xl sm:text-2xl font-semibold text-highlight">
+              {t("contact.storyTitle")}
+            </h2>
+            <p className="text-sm sm:text-base text-text-secondary dark:text-text-secondary">
+              {t("contact.storyContent")}
+            </p>
           </div>
         </section>
 
         {/* Location & Contact Info */}
-        <section className="grid gap-6 sm:grid-cols-3 text-center bg-secondary dark:bg-accent p-6 rounded-lg shadow">
+        <section className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center bg-secondary dark:bg-accent p-6 rounded-lg shadow">
           <div>
-            <h3 className="font-semibold text-primary dark:text-primary">{t("contact.locationTitle")}</h3>
-            <p className="text-text-secondary dark:text-text-secondary">{t("contact.address")}</p>
+            <h3 className="font-semibold text-primary dark:text-primary text-lg">
+              {t("contact.locationTitle")}
+            </h3>
+            <p className="text-sm sm:text-base text-text-secondary dark:text-text-secondary">
+              {t("contact.address")}
+            </p>
           </div>
           <div>
-            <h3 className="font-semibold text-primary dark:text-primary">{t("contact.phone")}</h3>
-            <p className="text-text-secondary dark:text-text-secondary">+880 123 456 789</p>
+            <h3 className="font-semibold text-primary dark:text-primary text-lg">
+              {t("contact.phone")}
+            </h3>
+            <p className="text-sm sm:text-base text-text-secondary dark:text-text-secondary">
+              +880 123 456 789
+            </p>
           </div>
           <div>
-            <h3 className="font-semibold text-primary dark:text-primary">{t("contact.email")}</h3>
-            <p className="text-text-secondary dark:text-text-secondary">info@restaurant.com</p>
+            <h3 className="font-semibold text-primary dark:text-primary text-lg">
+              {t("contact.email")}
+            </h3>
+            <p className="text-sm sm:text-base text-text-secondary dark:text-text-secondary">
+              info@restaurant.com
+            </p>
           </div>
         </section>
 
         {/* Contact Form */}
-        <form onSubmit={handleFormSubmit} className="grid gap-6 sm:grid-cols-2">
+        <form
+          onSubmit={handleFormSubmit}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+        >
           <input
             type="text"
             name="name"
@@ -95,7 +114,7 @@ const ContactPage: React.FC = () => {
             placeholder={t("contact.formEmail")}
             value={formData.email}
             onChange={handleChange}
-            className={inputClass.replace("col-span-2", "")}
+            className={inputClass}
             required
           />
           <input
@@ -104,7 +123,7 @@ const ContactPage: React.FC = () => {
             placeholder={t("contact.formPhone")}
             value={formData.phone}
             onChange={handleChange}
-            className={inputClass.replace("col-span-2", "")}
+            className={inputClass}
             required
           />
           <textarea
@@ -112,20 +131,22 @@ const ContactPage: React.FC = () => {
             placeholder={t("contact.formMessage")}
             value={formData.message}
             onChange={handleChange}
-            className={`${inputClass} h-32`}
+            className={`${inputClass} h-32 sm:col-span-2`}
             required
           />
           <button
             type="submit"
-            className="col-span-2 bg-primary hover:bg-highlight text-white p-3 rounded-md transition"
+            className="sm:col-span-2 bg-primary hover:bg-highlight text-white py-3 rounded-md transition text-sm sm:text-base"
           >
             {t("contact.formSubmit")}
           </button>
         </form>
 
         {/* Newsletter Section */}
-        <section className="mt-12 p-6 bg-secondary dark:bg-accent rounded-lg shadow text-center">
-          <h2 className="text-2xl font-semibold mb-4 text-primary dark:text-primary">{t("contact.newsletterTitle")}</h2>
+        <section className="mt-12 p-6 bg-secondary dark:bg-accent rounded-lg shadow text-center space-y-4">
+          <h2 className="text-xl sm:text-2xl font-semibold text-primary dark:text-primary">
+            {t("contact.newsletterTitle")}
+          </h2>
           <form
             onSubmit={handleNewsletterSubmit}
             className="flex flex-col sm:flex-row justify-center gap-4"
@@ -135,12 +156,12 @@ const ContactPage: React.FC = () => {
               placeholder={t("contact.newsletterPlaceholder")}
               value={newsletterEmail}
               onChange={(e) => setNewsletterEmail(e.target.value)}
-              className="p-3 border border-bg-dark dark:border-bg-light rounded-md bg-transparent text-text-primary dark:text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary flex-1"
+              className="w-full sm:flex-1 p-3 border border-bg-dark dark:border-bg-light rounded-md bg-transparent text-text-primary dark:text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary"
               required
             />
             <button
               type="submit"
-              className="bg-primary hover:bg-highlight text-white p-3 rounded-md transition"
+              className="bg-primary hover:bg-highlight text-white px-6 py-3 rounded-md transition text-sm sm:text-base"
             >
               {t("contact.newsletterSubmit")}
             </button>
@@ -149,9 +170,11 @@ const ContactPage: React.FC = () => {
 
         {/* Modal */}
         {showModal && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div className="bg-primary dark:bg-accent p-8 rounded-lg shadow-lg text-center text-white">
-              <p className="text-lg font-semibold">{modalMessage}</p>
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 px-4">
+            <div className="bg-primary dark:bg-accent p-6 sm:p-8 rounded-lg shadow-lg text-center text-white max-w-sm w-full">
+              <p className="text-base sm:text-lg font-semibold">
+                {modalMessage}
+              </p>
               <button
                 className="mt-4 bg-highlight text-white px-6 py-2 rounded-md hover:opacity-90 transition"
                 onClick={() => setShowModal(false)}
